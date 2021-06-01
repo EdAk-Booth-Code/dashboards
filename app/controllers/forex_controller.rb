@@ -21,10 +21,10 @@ class ForexController < ApplicationController
 
     @first_currency = params.fetch("symbol_1")
     @second_currency = params.fetch("symbol_2")
-    currency_converter_site = open("https://api.exchangerate.host/convert?from=@first_currency&to=@second_currency")
-    @string_currency_converter_site = StringIO.gets(currency_converter_site)
+    currency_converter_site = open("https://api.exchangerate.host/convert?from="+ @first_currency + "&to=" +@second_currency).read
+    parsed_currency_converter_site = JSON.parse(currency_converter_site)
+    @exchange_rate = parsed_currency_converter_site.fetch("info").fetch("rate")
     
-
     render({:template => "/forex/currency_converter.html.erb"})
   
   end

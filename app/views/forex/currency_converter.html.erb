@@ -2,9 +2,6 @@
   Convert <%=@first_currency%> to <%=@second_currency%>
 </h1>
 
-<p>1 <%=@first_currency%> equals ***** <%=@second_currency%>.</p>
-
-
-<%=@string_currency_converter_site%>
+<p>1 <%=@first_currency%> equals <%= @exchange_rate %> <%=@second_currency%>.</p>
 
 <p>Go <a href="/forex/<%=@first_currency%>">back</a>.</p>
